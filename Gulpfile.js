@@ -1,12 +1,8 @@
 const gulp = require('gulp');
-const all = require('gulp-all');
-
-const copyAssets = function (assets, destination) {
-    return all(assets.map((asset) => gulp.src(asset.path).pipe(gulp.dest(destination + '/' + asset.name))));
-};
+const del = require('del');
+const copyAssets = require('../../Utilities/Lombiq.Gulp.Extensions/Tasks/copy-assets');
 
 const nodeModulesBasePath = './node_modules/';
-const distBasePath = './wwwroot/vendors/';
 const assets = [
     {
         name: 'chart.js',
@@ -22,9 +18,9 @@ const assets = [
     },
 ];
 
-gulp.task('copy:vendor-assets', () => copyAssets(assets, distBasePath));
-gulp.task('clean:vendor-assets', () => copyAssets.clean(distBasePath));
+gulp.task('copy:assets', () => copyAssets(assets, './wwwroot/vendors/'));
+gulp.task('clean:assets', () => del('./wwwroot/vendors/'));
 
-gulp.task('default', gulp.series('copy:vendor-assets'));
-gulp.task('clean', gulp.series('clean:vendor-assets'));
+gulp.task('default', gulp.series('copy:assets'));
+gulp.task('clean', gulp.series('clean:assets'));
 
