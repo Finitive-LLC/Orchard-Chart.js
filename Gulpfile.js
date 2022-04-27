@@ -1,7 +1,12 @@
-const recommendedSetup = require('../../Utilities/Lombiq.Gulp.Extensions/recommended-setup');
+const gulp = require('gulp');
+const all = require('gulp-all');
+
+const copyAssets = function (assets, destination) {
+    return all(assets.map((asset) => gulp.src(asset.path).pipe(gulp.dest(destination + '/' + asset.name))));
+};
 
 const nodeModulesBasePath = './node_modules/';
-
+const distBasePath = './wwwroot/vendors/';
 const assets = [
     {
         name: 'chart.js',
@@ -17,4 +22,9 @@ const assets = [
     },
 ];
 
-recommendedSetup.setupVendorsCopyAssets(assets);
+gulp.task('copy:vendor-assets', () => copyAssets(assets, distBasePath));
+gulp.task('clean:vendor-assets', () => copyAssets.clean(distBasePath));
+
+gulp.task('default', gulp.series('copy:vendor-assets'));
+gulp.task('clean', gulp.series('clean:vendor-assets'));
+
