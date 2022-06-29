@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <DefaultItemExcludes>$(DefaultItemExcludes);.git*;node_modules\**;Tests\**</DefaultItemExcludes>
-
+    
   </PropertyGroup>
 
   <PropertyGroup>
@@ -14,16 +14,10 @@
     <Description>Lombiq Chart.js for Orchard Core: An Orchard Core wrapper around the Chart.js library for displaying datasets as various charts.  See the project website for detailed documentation.</Description>
     <PackageIcon>NuGetIcon.png</PackageIcon>
     <PackageTags>OrchardCore;Lombiq;AspNetCore;Chart.js;chart</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Chart.js</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Chart.js</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Finitive-LLC/Orchard-Chart.js</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Finitive-LLC/Orchard-Chart.js</PackageProjectUrl>
     <PackageLicenseFile>Licence.md</PackageLicenseFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="Licence.md" Pack="true" PackagePath="" />
-    <None Include="Readme.md" />
-    <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Remove="node_modules\**" />
@@ -31,8 +25,8 @@
     <None Include="Readme.md" />
   </ItemGroup>
 
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\Utilities\Lombiq.Npm.Targets\Lombiq.Npm.Targets.props" />
-  <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\Utilities\Lombiq.Npm.Targets\Lombiq.Npm.Targets.targets" />
+  <!-- <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\Utilities\Lombiq.Npm.Targets\Lombiq.Npm.Targets.props" /> -->
+  <!-- <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\Utilities\Lombiq.Npm.Targets\Lombiq.Npm.Targets.targets" /> -->
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
@@ -44,8 +38,8 @@
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
     <ProjectReference Include="..\..\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.csproj" />
-    <ProjectReference Include="..\..\Utilities\Lombiq.Gulp.Extensions\Lombiq.Gulp.Extensions.csproj" />
-    <ProjectReference Include="..\..\Utilities\Lombiq.Npm.Targets\Lombiq.Npm.Targets.csproj" />
+    <!--<ProjectReference Include="..\..\Utilities\Lombiq.Gulp.Extensions\Lombiq.Gulp.Extensions.csproj" />-->
+    <!--<ProjectReference Include="..\..\Utilities\Lombiq.Npm.Targets\Lombiq.Npm.Targets.csproj" />-->
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
